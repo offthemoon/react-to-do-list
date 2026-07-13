@@ -46,7 +46,7 @@ function App(){
     <div>
 
       <ul>
-           {to_do_list.map((current,index) => <li> {current['input']} </li> )} 
+           {to_do_list.map((current,index) => <li> {current['input']}  Status - {current['completed'] ? '✅' : '❌'} </li> )} 
       </ul>
 
     </div>
