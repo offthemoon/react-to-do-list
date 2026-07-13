@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 function App(){
 
-  const [user_input, set_user_input] = useState([]);
+  const [user_input, set_user_input] = useState('');
 
   const [to_do_list,set_to_do_list] = useState([]);
 
@@ -15,11 +15,17 @@ function App(){
       return; 
     }
 
+    let object = {
+      input : user_input,
+      completed : false
+    }
+    
 
-
+    set_to_do_list([...to_do_list,object]); //We are going to want to update the to do list. 
     set_user_input('') //reset it, make back empty. 
-
   }
+
+  
 
 
 
@@ -30,12 +36,22 @@ function App(){
 
     <div>
       <label> Enter Item: </label>
-    <input value={user_input} onChange={() => set_user_input(event.target.value())} />  
+    <input value={user_input} onChange={ event => set_user_input(event.target.value)} />  
     </div>
 
     <div>
     <button onClick = {add_to_list}> Add To List </button>
     </div>
+
+    <div>
+
+      <ul>
+           {to_do_list.map((current,index) => <li> {current['input']} </li> )} 
+      </ul>
+
+    </div>
+
+
 
 
   
