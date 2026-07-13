@@ -16,10 +16,8 @@ function App(){
     }
 
 
-    
+
     set_user_input('') //reset it, make back empty. 
-
-
 
   }
 
@@ -35,8 +33,9 @@ function App(){
     <input value={user_input} onChange={() => set_user_input(event.target.value())} />  
     </div>
 
-    <button value = {}> Add To List </button>
-
+    <div>
+    <button onClick = {add_to_list}> Add To List </button>
+    </div>
 
 
   
