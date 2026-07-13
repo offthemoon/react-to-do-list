@@ -25,6 +25,25 @@ function App(){
     set_user_input('') //reset it, make back empty. 
   }
 
+  function toggle_status(index){ //we are going to want to be able to flip the status of the item for a user. 
+
+    //Way we do this -> update list and redraw it.
+    //So make a new list and redraw it.
+
+    const new_list = to_do_list.map((current,i) => {
+
+      if(i === index)
+      {
+        return {...current, completed : !current['completed']}
+      }
+
+      return current;
+    })
+
+    set_to_do_list(new_list);
+
+  }
+
   
 
 
@@ -46,7 +65,7 @@ function App(){
     <div>
 
       <ul>
-           {to_do_list.map((current,index) => <li> {current['input']}  Status - {current['completed'] ? '✅' : '❌'} </li> )} 
+           {to_do_list.map((current,index) => <li> <span onClick= {() => toggle_status(index)}> {current['input']}  Status - {current['completed'] ? '✅' : '❌'} </span> </li> )} 
       </ul>
 
     </div>
