@@ -44,6 +44,26 @@ function App(){
 
   }
 
+  function delete_item(index){
+
+    //In order to delete an item -> we are going to want to filter the list.... using .filter()
+
+    // .filter() -> returns a new list , items stay if returned true , digraded if returned false. 
+
+    const new_list = to_do_list.filter((current,i) =>{
+
+      if(i != index)
+      {
+        return true; 
+      }
+
+
+    });
+
+    set_to_do_list(new_list);
+
+  }
+
   
 
 
@@ -65,7 +85,8 @@ function App(){
     <div>
 
       <ul>
-           {to_do_list.map((current,index) => <li> <span onClick= {() => toggle_status(index)}> {current['input']}  Status - {current['completed'] ? '✅' : '❌'} </span> </li> )} 
+           {to_do_list.map((current,index) => <li> <span onClick= {() => toggle_status(index)}> {current['input']}  Status - {current['completed'] ? '✅' : '❌'} </span> 
+           <button onClick={() => delete_item(index)}> Delete Item </button> </li> )} 
       </ul>
 
     </div>
